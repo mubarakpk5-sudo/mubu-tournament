@@ -11,115 +11,131 @@ body{background:linear-gradient(180deg,#0f0c29,#302b63,#24243e);color:white;font
 body.admin .admin-only{display:flex!important}
 body.admin .admin-block{display:block!important}
 .admin-block{display:none}
-.score-btn{width:38px;height:38px;min-width:38px;border-radius:12px;font-weight:900;font-size:24px;box-shadow:0 3px 8px rgba(0,0,0,.25);line-height:1;flex-shrink:0}
+.score-btn{width:46px;height:46px;border-radius:14px;font-weight:900;font-size:28px;box-shadow:0 3px 8px rgba(0,0,0,.25);line-height:1}
 .btn-plus{background:#16a34a;color:#fff}
 .btn-minus{background:#dc2626;color:#fff}
 .glass{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:18px}
 .input{width:100%;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:8px 10px;font-size:14px;color:white;outline:none}
+.input:focus{border-color:#facc15}
 .chip{background:rgba(255,255,255,.14);padding:4px 9px;border-radius:9999px;font-size:13px;font-weight:600;display:inline-flex;gap:5px;align-items:center}
 #secretDot{color:rgba(255,255,255,.25);font-size:22px;cursor:pointer;padding:10px}
-.scoreboard{background:#ffffff;color:#111827;border-radius:18px;padding:10px;box-shadow:0 10px 30px rgba(0,0,0,.35);overflow:hidden}
-.score-num{font-size:48px;line-height:1;font-weight:900;letter-spacing:-2px;min-width:48px;text-align:center}
-.team-card{border-radius:14px;padding:8px 4px;transition:all .3s;overflow:hidden;min-width:0}
-.team-win{background:#bbf7d0!important;border:3px solid #16a34a!important}
+.scoreboard{background:#ffffff;color:#111827;border-radius:18px;padding:10px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.score-num{font-size:60px;line-height:1;font-weight:900;letter-spacing:-2px}
+.team-card{border-radius:14px;padding:8px 6px;transition:all .3s}
+.team-win{background:#bbf7d0!important;border:3px solid #16a34a!important;box-shadow:0 0 0 2px #16a34a33}
 .team-lose{background:#fee2e2!important;border:2px solid #fca5a5!important}
 .team-tie1{background:#dbeafe;border:2px solid #2563eb}
 .team-tie2{background:#fee2e2;border:2px solid #dc2626}
-.team-name-big{font-size:19px;font-weight:900;line-height:1.2;color:#111827;word-break:break-word;padding:0 2px}
-.player-name-big{font-size:13px;font-weight:800;line-height:1.35;color:#1e293b;min-height:32px;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-items:center;padding:0 2px}
-.player-name-big span{background:#fff;border:1px solid #cbd5e1;padding:2px 6px;border-radius:9999px;word-break:break-word}
-.admin-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.admin-btns button{width:100%;padding:10px 4px;border-radius:9999px;font-size:12px;font-weight:800}
+.player-name-big{font-size:14px;font-weight:800;line-height:1.35;color:#1e293b;min-height:38px;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-items:center}
+.player-name-big span{background:#fff;border:1px solid #cbd5e1;padding:2px 7px;border-radius:9999px}
 </style>
 </head>
 <body class="pb-8">
 <div class="text-center pt-2"><p class="text-[11px] tracking-[0.3em] text-yellow-300/90 font-bold">created by Mubu</p></div>
 <div class="mx-3 mt-1.5 bg-black/30 border border-white/10 rounded-xl py-2 px-3 flex justify-between items-center">
-  <div class="flex items-center gap-2"><span>📅</span><div><div id="liveDate" class="text-[15px] font-black leading-none">--/--/----</div><div class="text-[9px] text-white/60">DATE</div></div></div>
+  <div class="flex items-center gap-2"><span>📅</span><div><div id="liveDate" class="text-[15px] font-black leading-none">23/11/2026</div><div class="text-[9px] text-white/60">DATE • DD/MM/YYYY</div></div></div>
   <div class="text-center"><div class="text-[9px] text-white/60">LIVE</div><div class="w-2 h-2 bg-red-500 rounded-full mx-auto mt-0.5 animate-pulse"></div></div>
-  <div class="flex items-center gap-2 text-right"><div><div id="liveTime" class="text-[15px] font-black text-yellow-300 leading-none">--:--:--</div><div class="text-[9px] text-white/60">TIME • IST</div></div><span>🕐</span></div>
+  <div class="flex items-center gap-2 text-right"><div><div id="liveTime" class="text-[15px] font-black text-yellow-300 leading-none">10:15:30 AM</div><div class="text-[9px] text-white/60">TIME • IST</div></div><span>🕐</span></div>
 </div>
 <header class="text-center px-3 pt-2 pb-2">
-  <div class="text-[26px] font-black leading-tight bg-gradient-to-r from-yellow-300 via-pink-400 to-cyan-300 bg-clip-text text-transparent break-words">🏆 <span id="tournamentNameTxt">My Tournament</span></div>
+  <div class="text-[26px] font-black leading-tight bg-gradient-to-r from-yellow-300 via-pink-400 to-cyan-300 bg-clip-text text-transparent">🏆 <span id="tournamentNameTxt">My Tournament</span></div>
   <p id="adminBadge" class="hidden text-xs mt-1 text-green-300 font-bold">● ADMIN MODE ON - <button onclick="logoutAdmin()" class="underline">Logout</button></p>
-  <p id="viewerBadge" class="text-[11px] mt-1 text-white/60">👀 നിങ്ങൾ കാണുക മാത്രമാണ് ചെയ്യുന്നത്</p>
   <div class="admin-only flex-col gap-2 max-w-md mx-auto mt-2">
-    <input id="tournamentInput" class="input text-center font-bold" placeholder="ടൂർണമെന്റ് പേര് എഴുതുക">
+    <input id="tournamentInput" class="input text-center font-bold" placeholder="ടൂർണമെന്റ് പേര് എഴുതുക - Football / Badminton / Cricket">
     <button onclick="saveTournamentName()" class="bg-yellow-400 text-black font-bold py-2 rounded-full text-sm">✅ ടൂർണമെന്റ് പേര് സേവ് ചെയ്യുക</button>
   </div>
 </header>
 <div class="mx-3 scoreboard">
-  <div class="flex justify-between items-center gap-2">
-    <span id="liveBadge" class="bg-red-600 text-white px-2.5 py-1 rounded-full text-[11px] font-bold whitespace-nowrap shrink-0">● LIVE</span>
-    <select id="matchSelect" onchange="selectMatch(this.value)" class="flex-1 bg-slate-100 text-slate-800 text-[12px] rounded-lg px-2 py-2 font-bold min-w-0 w-full"></select>
+  <div class="flex justify-between items-center">
+    <span id="liveBadge" class="bg-red-600 text-white px-2.5 py-0.5 rounded-full text-[11px] font-bold">● LIVE</span>
+    <select id="matchSelect" onchange="selectMatch(this.value)" class="bg-slate-100 text-slate-800 text-xs rounded-lg px-2 py-1.5 font-bold max-w-[170px]"></select>
   </div>
   <div class="text-center text-[11px] text-slate-500 mt-1 font-bold" id="matchLabel">No Match</div>
   <div class="text-center text-[11px] font-black mt-0.5" id="leaderLabel"></div>
   <div class="flex items-stretch justify-between mt-1.5 gap-2 text-center">
     <div id="card1" class="flex-1 team-card team-tie1">
       <div class="text-[11px] font-black text-blue-700">TEAM 1 • 🔵 <span id="winTag1"></span></div>
-      <div id="liveTeam1Name" class="team-name-big">Team 1</div>
+      <div id="liveTeam1Name" class="font-black text-[18px] leading-tight mt-0.5 text-slate-900">Team 1</div>
       <div id="liveTeam1Players" class="player-name-big"></div>
       <div class="text-[10px] text-slate-500">WINS: <b id="sets1" class="text-blue-700 text-sm">0</b></div>
-      <div class="flex items-center justify-center gap-1 mt-1">
+      <div class="flex items-center justify-center gap-1.5 mt-1">
         <button class="admin-only score-btn btn-minus" onclick="changeScore(0,-1)">−</button>
         <span id="score1" class="score-num text-slate-900">0</span>
         <button class="admin-only score-btn btn-plus" onclick="changeScore(0,1)">+</button>
       </div>
       <div class="text-[9px] font-black text-slate-500">POINTS</div>
-      <button onclick="editScoreDirect(0)" class="admin-only mx-auto mt-1 bg-slate-900 text-white text-[10px] font-bold px-2 py-1.5 rounded-full">✏️ സ്കോർ തിരുത്തുക</button>
+      <button onclick="editScoreDirect(0)" class="admin-only mx-auto mt-1 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded-full">✏️ സ്കോർ തിരുത്തുക</button>
     </div>
-    <div class="flex flex-col justify-center px-0 shrink-0"><div class="font-black text-slate-400 text-[15px] leading-none">VS</div><div id="vsSets" class="text-[11px] font-bold text-slate-600">0 - 0</div></div>
+    <div class="flex flex-col justify-center px-1"><div class="font-black text-slate-400 text-lg leading-none">VS</div><div id="vsSets" class="text-[11px] font-bold text-slate-600">0 - 0</div></div>
     <div id="card2" class="flex-1 team-card team-tie2">
       <div class="text-[11px] font-black text-red-700">TEAM 2 • 🔴 <span id="winTag2"></span></div>
-      <div id="liveTeam2Name" class="team-name-big">Team 2</div>
+      <div id="liveTeam2Name" class="font-black text-[18px] leading-tight mt-0.5 text-slate-900">Team 2</div>
       <div id="liveTeam2Players" class="player-name-big"></div>
       <div class="text-[10px] text-slate-500">WINS: <b id="sets2" class="text-red-700 text-sm">0</b></div>
-      <div class="flex items-center justify-center gap-1 mt-1">
+      <div class="flex items-center justify-center gap-1.5 mt-1">
         <button class="admin-only score-btn btn-minus" onclick="changeScore(1,-1)">−</button>
         <span id="score2" class="score-num text-slate-900">0</span>
         <button class="admin-only score-btn btn-plus" onclick="changeScore(1,1)">+</button>
       </div>
       <div class="text-[9px] font-black text-slate-500">POINTS</div>
-      <button onclick="editScoreDirect(1)" class="admin-only mx-auto mt-1 bg-slate-900 text-white text-[10px] font-bold px-2 py-1.5 rounded-full">✏️ സ്കോർ തിരുത്തുക</button>
+      <button onclick="editScoreDirect(1)" class="admin-only mx-auto mt-1 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded-full">✏️ സ്കോർ തിരുത്തുക</button>
     </div>
   </div>
-  <div class="admin-only admin-btns mt-2.5">
-    <button onclick="winSet()" class="bg-slate-900 text-white">✓ Set Complete</button>
-    <button onclick="startMatch()" class="bg-green-600 text-white">▶ Start</button>
-    <button onclick="finishMatch()" class="bg-gradient-to-r from-pink-600 to-purple-600 text-white">🏆 Finish</button>
-    <button onclick="resetCurrentScore()" class="bg-slate-200 text-slate-800">Reset</button>
+  <div class="admin-only justify-center gap-2 mt-2.5 flex-wrap">
+    <button onclick="winSet()" class="bg-slate-900 text-white text-[11px] font-bold px-3 py-2 rounded-full">✓ Set Complete</button>
+    <button onclick="startMatch()" class="bg-green-600 text-white text-[11px] font-bold px-3 py-2 rounded-full">▶ Start</button>
+    <button onclick="finishMatch()" class="bg-gradient-to-r from-pink-600 to-purple-600 text-white text-[11px] font-bold px-3 py-2 rounded-full">🏆 Finish</button>
+    <button onclick="resetCurrentScore()" class="bg-slate-200 text-slate-800 text-[11px] font-bold px-3 py-2 rounded-full">Reset</button>
   </div>
 </div>
 <div class="mx-3 mt-3 glass p-3">
-  <div class="flex justify-between items-center gap-2"><h3 class="font-bold">👥 Teams <span id="teamCount" class="text-yellow-300 text-xs"></span></h3><button onclick="addTeamPrompt()" class="admin-only bg-yellow-400 text-black text-xs font-bold px-3 py-1.5 rounded-full shrink-0">+ Team Add</button></div>
+  <div class="flex justify-between items-center">
+    <h3 class="font-bold">👥 Teams <span id="teamCount" class="text-yellow-300 text-xs"></span></h3>
+    <button onclick="addTeamPrompt()" class="admin-only bg-yellow-400 text-black text-xs font-bold px-3 py-1.5 rounded-full">+ Team Add</button>
+  </div>
+  <p class="text-[11px] text-white/60">അഡ്മിന് മാത്രം - എത്ര ടീം വേണമെങ്കിലും, ടീം പേര് + പ്ലെയർ പേര്</p>
   <div id="teamsGrid" class="grid grid-cols-1 gap-2 mt-2"></div>
-  <div class="admin-only flex-col gap-2 mt-2"><input id="newTeamName" placeholder="പുതിയ ടീമിന്റെ പേര്" class="input"><button onclick="addTeamFromInput()" class="bg-yellow-400 text-black font-bold py-2 rounded-full text-sm">+ ഈ ടീമിനെ ചേർക്കുക</button></div>
+  <div class="admin-only flex-col gap-2 mt-2">
+    <input id="newTeamName" placeholder="പുതിയ ടീമിന്റെ പേര്" class="input">
+    <button onclick="addTeamFromInput()" class="bg-yellow-400 text-black font-bold py-2 rounded-full text-sm">+ ഈ ടീമിനെ ചേർക്കുക</button>
+  </div>
 </div>
 <div class="mx-3 mt-3 glass p-3 overflow-x-auto">
   <h3 class="font-bold">📊 Points Table</h3>
-  <table class="w-full text-sm mt-2 min-w-[560px]"><thead><tr class="text-left text-yellow-300 text-xs"><th class="py-1.5">POS</th><th>TEAM</th><th>കളി</th><th>ജയം</th><th>തോൽവി</th><th>POINTS</th><th class="admin-only">EDIT</th></tr></thead><tbody id="pointsTable"></tbody></table>
+  <p class="text-[11px] text-white/60">കളി • ജയം • തോൽവി • പോയിന്റ് - അഡ്മിന് മാത്രം, കളി കഴിഞ്ഞാലും Edit ചെയ്യാം, സേവ് ആയി നിൽക്കും</p>
+  <table class="w-full text-sm mt-2 min-w-[560px]">
+    <thead><tr class="text-left text-yellow-300 text-xs"><th class="py-1.5">POS</th><th>TEAM</th><th>കളി</th><th>ജയം</th><th>തോൽവി</th><th>POINTS</th><th class="admin-only">EDIT</th></tr></thead>
+    <tbody id="pointsTable"></tbody>
+  </table>
 </div>
 <div class="mx-3 mt-3 glass p-3">
   <h3 class="font-bold">📅 All Matches</h3>
-  <div class="admin-only flex-col gap-2 mt-2"><div class="flex gap-2"><select id="newMatchT1" class="input"></select><span class="py-2 font-bold">VS</span><select id="newMatchT2" class="input"></select></div><input id="newMatchLabel" placeholder="മത്സരത്തിന്റെ പേര്" class="input"><button onclick="createMatch()" class="bg-cyan-400 text-black font-bold py-2 rounded-full text-sm">+ പുതിയ മത്സരം ഉണ്ടാക്കുക</button></div>
+  <p class="text-[11px] text-white/60">കളി കഴിഞ്ഞാലും അഡ്മിന് ഏത് മത്സരത്തിന്റെയും സ്കോർ തിരുത്താം</p>
+  <div class="admin-only flex-col gap-2 mt-2">
+    <div class="flex gap-2"><select id="newMatchT1" class="input"></select><span class="py-2 font-bold">VS</span><select id="newMatchT2" class="input"></select></div>
+    <input id="newMatchLabel" placeholder="മത്സരത്തിന്റെ പേര് - ഉദാ: Semi Final 1" class="input">
+    <button onclick="createMatch()" class="bg-cyan-400 text-black font-bold py-2 rounded-full text-sm">+ പുതിയ മത്സരം ഉണ്ടാക്കുക</button>
+  </div>
   <div id="matchesList" class="mt-2 space-y-2"></div>
 </div>
 <div class="admin-block mx-3 mt-3 bg-gradient-to-r from-yellow-300 to-orange-400 text-black rounded-2xl p-3">
   <h3 class="font-black">🔐 Admin Panel - നിനക്ക് മാത്രം</h3>
+  <p class="text-xs">ഈ പാസ്‌വേഡ് ലിങ്കിൽ കാണുന്നവർക്ക് കാണില്ല.</p>
   <label class="text-xs font-bold mt-2 block">നിലവിലെ Password: <span id="showCode" class="text-base">1234</span></label>
-  <div class="flex gap-2 mt-1.5"><input id="newCode" placeholder="പുതിയ Password" class="flex-1 rounded-lg px-3 py-2 text-sm bg-white text-black outline-none"><button onclick="changeCode()" class="bg-black text-white font-bold px-4 rounded-lg text-sm">മാറ്റുക</button></div>
+  <div class="flex gap-2 mt-1.5">
+    <input id="newCode" placeholder="പുതിയ Password" class="flex-1 rounded-lg px-3 py-2 text-sm bg-white text-black outline-none">
+    <button onclick="changeCode()" class="bg-black text-white font-bold px-4 rounded-lg text-sm">മാറ്റുക</button>
+  </div>
   <button onclick="copyLink()" class="w-full mt-2 bg-slate-900 text-white font-bold py-2 rounded-full text-sm">📤 Live Link Copy ചെയ്യുക</button>
   <button onclick="resetAll()" class="w-full mt-2 bg-red-600 text-white font-bold py-2 rounded-full text-sm">Reset Full Tournament</button>
 </div>
 <div class="text-center mt-4"><span id="secretDot" onclick="askCode()">•</span><div class="text-[11px] text-white/50">Live Score • created by Mubu</div></div>
-
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {getDatabase, ref, onValue, set} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 const app = initializeApp({databaseURL:"https://tanur-keralosav-default-rtdb.firebaseio.com"});
 const db = getDatabase(app);
-const liveRef = ref(db,"mubu_tournament_v4");
+const liveRef = ref(db,"mubu_tournament_v5");
 function pad(n){ return n<10 ? '0'+n : ''+n; }
 function updateDateTime(){
   let now = new Date(); let ist = new Date(now.toLocaleString('en-US', {timeZone:'Asia/Kolkata'}));
@@ -129,21 +145,10 @@ function updateDateTime(){
   document.getElementById('liveTime').textContent = pad(h12) + ':' + pad(ist.getMinutes()) + ':' + pad(ist.getSeconds()) + ' ' + ampm;
 }
 updateDateTime(); setInterval(updateDateTime, 1000);
-let defaultState = {
-  code:'1234', tournamentName:'My Tournament',
-  teams:[{name:'Thanaloor', players:['Shamil','Nithin']},{name:'Cheriyamundam', players:[]},{name:'Team 3', players:[]},{name:'Team 4', players:[]}],
-  matches:[{label:'Match 1', t1:0, t2:1, cur1:0, cur2:0, setsWon1:0, setsWon2:0, status:'Not Started', winner:-1}],
-  current:0, manualStats:{}
-};
+let defaultState = {code:'1234', tournamentName:'My Tournament',teams:[{name:'Team 1', players:[]},{name:'Team 2', players:[]},{name:'Team 3', players:[]},{name:'Team 4', players:[]}],matches:[{label:'Match 1', t1:0, t2:1, cur1:0, cur2:0, setsWon1:0, setsWon2:0, status:'Not Started', winner:-1}],current:0, manualStats:{}};
 let state = JSON.parse(JSON.stringify(defaultState));
 let firebaseReady = false;
-onValue(liveRef, (snap)=>{
-  let d = snap.val();
-  if(d){ state = d; }
-  else { set(liveRef, state); }
-  firebaseReady = true;
-  render();
-});
+onValue(liveRef, (snap)=>{ let d = snap.val(); if(d){ state = d; } else { set(liveRef, state); } firebaseReady = true; render(); });
 function saveOnly(){ if(firebaseReady) set(liveRef, state); }
 function save(){ saveOnly(); render(); }
 function getTable(){
@@ -160,7 +165,6 @@ function renderPlayers(elId, players){
 }
 function render(){
   let isAdmin=document.body.classList.contains('admin');
-  document.getElementById('viewerBadge').style.display = isAdmin ? 'none' : 'block';
   document.getElementById('tournamentNameTxt').textContent=state.tournamentName;
   document.getElementById('tournamentInput').value=state.tournamentName;
   document.getElementById('teamCount').textContent=`(${state.teams.length} Teams)`;
@@ -179,40 +183,42 @@ function render(){
     let c1=document.getElementById('card1'), c2=document.getElementById('card2');
     let l1=document.getElementById('leaderLabel'), w1=document.getElementById('winTag1'), w2=document.getElementById('winTag2');
     c1.className='flex-1 team-card'; c2.className='flex-1 team-card'; w1.textContent=''; w2.textContent='';
-    if(m.cur1>m.cur2){ c1.classList.add('team-win'); c2.classList.add('team-lose'); w1.textContent='🏆 LEADING'; l1.textContent='🟢 '+state.teams[m.t1].name+' മുന്നിൽ'; l1.style.color='#16a34a'; }
-    else if(m.cur2>m.cur1){ c2.classList.add('team-win'); c1.classList.add('team-lose'); w2.textContent='🏆 LEADING'; l1.textContent='🟢 '+state.teams[m.t2].name+' മുന്നിൽ'; l1.style.color='#16a34a'; }
+    if(m.cur1>m.cur2){ c1.classList.add('team-win'); c2.classList.add('team-lose'); w1.textContent='🏆 LEADING'; l1.textContent='🟢 '+state.teams[m.t1].name+' മുന്നിൽ നിൽക്കുന്നു'; l1.style.color='#16a34a'; }
+    else if(m.cur2>m.cur1){ c2.classList.add('team-win'); c1.classList.add('team-lose'); w2.textContent='🏆 LEADING'; l1.textContent='🟢 '+state.teams[m.t2].name+' മുന്നിൽ നിൽക്കുന്നു'; l1.style.color='#16a34a'; }
+    else if(m.setsWon1>m.setsWon2){ c1.classList.add('team-win'); c2.classList.add('team-lose'); l1.textContent='🟢 '+state.teams[m.t1].name+' മുന്നിൽ'; l1.style.color='#16a34a'; }
+    else if(m.setsWon2>m.setsWon1){ c2.classList.add('team-win'); c1.classList.add('team-lose'); l1.textContent='🟢 '+state.teams[m.t2].name+' മുന്നിൽ'; l1.style.color='#16a34a'; }
     else { c1.classList.add('team-tie1'); c2.classList.add('team-tie2'); l1.textContent='🤝 സമനില'; l1.style.color='#64748b'; }
   }
-  document.getElementById('teamsGrid').innerHTML=state.teams.map((t,i)=>`<div class="bg-black/30 rounded-xl p-2.5 border border-white/10"><div class="flex justify-between items-center"><div class="text-[10px] text-white/50">TEAM ${i+1}</div>${isAdmin?`<button onclick="deleteTeam(${i})" class="text-[11px] bg-red-500/80 px-2 py-0.5 rounded-full font-bold">Delete</button>`:''}</div><input value="${t.name}" onchange="renameTeam(${i},this.value)" class="w-full bg-transparent border-b border-dashed border-white/30 text-center font-bold outline-none py-0.5" ${isAdmin?'':'readonly'}><div class="flex flex-wrap gap-1 mt-1.5 justify-center">${(t.players||[]).map((p,idx)=>`<span class="chip">${p} ${isAdmin?`<button onclick="removePlayer(${i},${idx})">✕</button>`:''}</span>`).join('')||'<span class="text-[11px] text-white/50">Players ഇല്ല</span>'}</div>${isAdmin?`<div class="flex gap-1 mt-1.5"><input id="pIn${i}" placeholder="പ്ലെയർ - Shamil, Nithin" class="input !py-1.5 !text-xs flex-1"><button onclick="addPlayer(${i})" class="bg-yellow-400 text-black text-xs font-bold px-3 rounded-lg">+ Add</button></div>`:''}</div>`).join('');
+  document.getElementById('teamsGrid').innerHTML=state.teams.map((t,i)=>`<div class="bg-black/30 rounded-xl p-2.5 border border-white/10"><div class="flex justify-between items-center"><div class="text-[10px] text-white/50">TEAM ${i+1}</div>${isAdmin?`<button onclick="deleteTeam(${i})" class="text-[11px] bg-red-500/80 px-2 py-0.5 rounded-full font-bold">Delete</button>`:''}</div><input value="${t.name}" onchange="renameTeam(${i},this.value)" class="w-full bg-transparent border-b border-dashed border-white/30 text-center font-bold outline-none py-0.5" ${isAdmin?'':'readonly'}><div class="flex flex-wrap gap-1 mt-1.5 justify-center">${(t.players||[]).map((p,idx)=>`<span class="chip">${p} ${isAdmin?`<button onclick="removePlayer(${i},${idx})">✕</button>`:''}</span>`).join('')||'<span class="text-[11px] text-white/50">Players ഇല്ല</span>'}</div>${isAdmin?`<div class="flex gap-1 mt-1.5"><input id="pIn${i}" placeholder="പ്ലെയർ പേര്" class="input !py-1.5 !text-xs flex-1"><button onclick="addPlayer(${i})" class="bg-yellow-400 text-black text-xs font-bold px-3 rounded-lg">+ Add</button></div>`:''}</div>`).join('');
   let table=getTable();
   document.getElementById('pointsTable').innerHTML=table.map((row,pos)=>{ let medal=pos===0?'🥇':pos===1?'🥈':pos===2?'🥉':(pos+1); return `<tr class="border-b border-white/10"><td class="py-1.5 font-bold">${medal}</td><td class="font-bold">${row.name}</td><td>${row.played}</td><td class="text-green-300 font-bold">${row.won}</td><td class="text-red-300 font-bold">${row.lost}</td><td class="font-black text-yellow-300">${row.pts}</td><td class="admin-only">${isAdmin?`<button onclick="editTeamStats(${row.i})" class="bg-yellow-400 text-black px-2 py-1 rounded-full text-[11px] font-bold">✏️ Edit All</button>`:''}</td></tr>`; }).join('');
   document.getElementById('matchSelect').innerHTML=state.matches.map((mm,i)=>`<option value="${i}" ${i===state.current?'selected':''}>${mm.label} - ${state.teams[mm.t1]?.name} vs ${state.teams[mm.t2]?.name}</option>`).join('');
-  document.getElementById('matchesList').innerHTML=state.matches.map((mm,i)=>{ let w=mm.winner!==-1?`🏆 ${state.teams[mm.winner]?.name}`:''; return `<div class="flex justify-between items-center bg-black/30 rounded-xl p-2 text-sm ${i===state.current?'border border-yellow-400':''}"><span class="break-words min-w-0">${state.teams[mm.t1]?.name} <b>${mm.setsWon1} - ${mm.setsWon2} (${mm.cur1} - ${mm.cur2})</b> ${state.teams[mm.t2]?.name}<br><span class="text-[11px] text-white/60">${mm.label} • ${mm.status} • ${w}</span></span><div class="flex gap-1 flex-wrap justify-end shrink-0"><button onclick="selectMatch(${i})" class="text-[11px] bg-yellow-400 text-black font-bold px-2 py-1 rounded-full">${i===state.current?'LIVE':'View'}</button>${isAdmin?`<button onclick="editMatchScore(${i})" class="text-[11px] bg-white text-black px-2 py-1 rounded-full font-bold">✏️ Edit</button><button onclick="deleteMatch(${i})" class="text-[11px] bg-red-500 px-2 py-1 rounded-full font-bold">✕</button>`:''}</div></div>`; }).join('');
+  document.getElementById('matchesList').innerHTML=state.matches.map((mm,i)=>{ let w=mm.winner!==-1?`🏆 ${state.teams[mm.winner]?.name}`:''; return `<div class="flex justify-between items-center bg-black/30 rounded-xl p-2 text-sm ${i===state.current?'border border-yellow-400':''}"><span>${state.teams[mm.t1]?.name} <b>${mm.setsWon1} - ${mm.setsWon2} (${mm.cur1} - ${mm.cur2})</b> ${state.teams[mm.t2]?.name}<br><span class="text-[11px] text-white/60">${mm.label} • ${mm.status} • ${w}</span></span><div class="flex gap-1 flex-wrap justify-end"><button onclick="selectMatch(${i})" class="text-[11px] bg-yellow-400 text-black font-bold px-2 py-1 rounded-full">${i===state.current?'LIVE':'View'}</button>${isAdmin?`<button onclick="editMatchScore(${i})" class="text-[11px] bg-white text-black px-2 py-1 rounded-full font-bold">✏️ Edit Score</button><button onclick="deleteMatch(${i})" class="text-[11px] bg-red-500 px-2 py-1 rounded-full font-bold">✕</button>`:''}</div></div>`; }).join('');
   document.getElementById('newMatchT1').innerHTML=state.teams.map((t,i)=>`<option value="${i}">${t.name}</option>`).join('');
   document.getElementById('newMatchT2').innerHTML=state.teams.map((t,i)=>`<option value="${i}" ${i===1?'selected':''}>${t.name}</option>`).join('');
 }
-window.saveTournamentName=function(){ let v=document.getElementById('tournamentInput').value.trim(); if(!v) return alert('പേര് എഴുതൂ'); state.tournamentName=v; save(); }
+window.saveTournamentName=function(){ let v=document.getElementById('tournamentInput').value.trim(); if(!v) return alert('പേര് എഴുതൂ'); state.tournamentName=v; save(); alert('ടൂർണമെന്റ് പേര് മാറി: '+v); }
 window.renameTeam=function(i,val){ state.teams[i].name=val; save(); }
 window.addTeamPrompt=function(){ let n=prompt('പുതിയ ടീമിന്റെ പേര്:'); if(n&&n.trim()){ state.teams.push({name:n.trim(),players:[]}); save(); } }
 window.addTeamFromInput=function(){ let inp=document.getElementById('newTeamName'); let v=inp.value.trim(); if(!v) return alert('ടീമിന്റെ പേര് എഴുതൂ'); state.teams.push({name:v,players:[]}); inp.value=''; save(); }
-window.deleteTeam=function(i){ if(!confirm('ഡിലീറ്റ് ചെയ്യണോ?')) return; state.teams.splice(i,1); state.matches=state.matches.filter(m=>m.t1!==i&&m.t2!==i); save(); }
-window.addPlayer=function(i){ let inp=document.getElementById('pIn'+i); let v=inp.value.trim(); if(!v) return; let parts = v.split(',').map(s=>s.trim()).filter(s=>s); parts.forEach(p=> state.teams[i].players.push(p)); inp.value=''; save(); }
-window.removePlayer=function(ti,pi){ if(confirm('മാറ്റണോ?')){ state.teams[ti].players.splice(pi,1); save(); } }
+window.deleteTeam=function(i){ if(!confirm('ഈ ടീമിനെ ഡിലീറ്റ് ചെയ്യണോ?')) return; state.teams.splice(i,1); state.matches=state.matches.filter(m=>m.t1!==i&&m.t2!==i); save(); }
+window.addPlayer=function(i){ let inp=document.getElementById('pIn'+i); let v=inp.value.trim(); if(!v) return; state.teams[i].players.push(v); inp.value=''; save(); }
+window.removePlayer=function(ti,pi){ if(confirm('ഈ പ്ലെയറെ മാറ്റണോ?')){ state.teams[ti].players.splice(pi,1); save(); } }
 window.selectMatch=function(i){ state.current=parseInt(i); save(); }
-window.changeScore=function(team,d){ let m=state.matches[state.current]; if(team===0) m.cur1=Math.max(0,m.cur1+d); else m.cur2=Math.max(0,m.cur2+d); save(); }
-window.editScoreDirect=function(team){ let m=state.matches[state.current]; let cur = team===0?m.cur1:m.cur2; let v=prompt('പുതിയ സ്കോർ?',cur); if(v===null) return; let n=parseInt(v); if(isNaN(n)||n<0) return; if(team===0) m.cur1=n; else m.cur2=n; save(); }
-window.editMatchScore=function(i){ let m=state.matches[i]; let s1=prompt(state.teams[m.t1].name+' - സ്കോർ',m.cur1); if(s1===null) return; let s2=prompt(state.teams[m.t2].name+' - സ്കോർ',m.cur2); if(s2===null) return; m.cur1=parseInt(s1)||0; m.cur2=parseInt(s2)||0; save(); }
-window.editTeamStats=function(teamIdx){ let cur = getTable().find(r=>r.i===teamIdx); let played=prompt('കളി എത്ര?', cur.played); if(played===null) return; let won=prompt('ജയം എത്ര?', cur.won); if(won===null) return; let lost=prompt('തോൽവി എത്ര?', cur.lost); if(lost===null) return; let pts=prompt('പോയിന്റ് എത്ര?', cur.pts); if(pts===null) return; state.manualStats[teamIdx]={played:parseInt(played)||0, won:parseInt(won)||0, lost:parseInt(lost)||0, pts:parseInt(pts)||0}; save(); }
+window.changeScore=function(team,d){ let m=state.matches[state.current]; if(!m) return; if(team===0) m.cur1=Math.max(0,m.cur1+d); else m.cur2=Math.max(0,m.cur2+d); save(); }
+window.editScoreDirect=function(team){ let m=state.matches[state.current]; let cur = team===0?m.cur1:m.cur2; let v=prompt('പുതിയ സ്കോർ എത്ര?',cur); if(v===null) return; let n=parseInt(v); if(isNaN(n)||n<0) return alert('ശരിയായ നമ്പർ കൊടുക്കൂ'); if(team===0) m.cur1=n; else m.cur2=n; save(); }
+window.editMatchScore=function(i){ let m=state.matches[i]; let s1=prompt(state.teams[m.t1].name+' - സ്കോർ',m.cur1); if(s1===null) return; let s2=prompt(state.teams[m.t2].name+' - സ്കോർ',m.cur2); if(s2===null) return; let w1=prompt(state.teams[m.t1].name+' - Wins / Sets',m.setsWon1); if(w1===null) return; let w2=prompt(state.teams[m.t2].name+' - Wins / Sets',m.setsWon2); if(w2===null) return; m.cur1=parseInt(s1)||0; m.cur2=parseInt(s2)||0; m.setsWon1=parseInt(w1)||0; m.setsWon2=parseInt(w2)||0; save(); alert('സ്കോർ തിരുത്തി സേവ് ആയി ✅'); }
+window.editTeamStats=function(teamIdx){ let cur = getTable().find(r=>r.i===teamIdx); let played=prompt('കളി (Played) എത്ര? - '+state.teams[teamIdx].name, cur.played); if(played===null) return; let won=prompt('ജയം (Won) എത്ര?', cur.won); if(won===null) return; let lost=prompt('തോൽവി (Lost) എത്ര?', cur.lost); if(lost===null) return; let pts=prompt('പോയിന്റ് (Points) എത്ര?', cur.pts); if(pts===null) return; state.manualStats[teamIdx]={played:parseInt(played)||0, won:parseInt(won)||0, lost:parseInt(lost)||0, pts:parseInt(pts)||0}; save(); alert(state.teams[teamIdx].name+' - എല്ലാം തിരുത്തി സേവ് ആയി ✅'); }
 window.winSet=function(){ let m=state.matches[state.current]; if(m.cur1===m.cur2) return alert('സമനിലയാണ്'); if(m.cur1>m.cur2) m.setsWon1++; else m.setsWon2++; m.cur1=0; m.cur2=0; m.status='LIVE'; save(); }
 window.startMatch=function(){ state.matches[state.current].status='LIVE'; save(); }
-window.finishMatch=function(){ let m=state.matches[state.current]; let winner=m.setsWon1>m.setsWon2?m.t1:m.setsWon2>m.setsWon1?m.t2:(m.cur1>m.cur2?m.t1:m.cur2>m.cur1?m.t2:-1); if(winner===-1) return alert('ആരാണ് ജയിച്ചത്?'); m.winner=winner; m.status='Full Time'; save(); alert('🏆 Winner: '+state.teams[winner].name); }
+window.finishMatch=function(){ let m=state.matches[state.current]; let winner=m.setsWon1>m.setsWon2?m.t1:m.setsWon2>m.setsWon1?m.t2:(m.cur1>m.cur2?m.t1:m.cur2>m.cur1?m.t2:-1); if(winner===-1) return alert('ആരാണ് ജയിച്ചത്? സ്കോർ കൊടുക്കൂ'); m.winner=winner; m.status='Full Time'; save(); alert('🏆 Winner: '+state.teams[winner].name); }
 window.resetCurrentScore=function(){ let m=state.matches[state.current]; m.cur1=0; m.cur2=0; save(); }
-window.createMatch=function(){ let t1=parseInt(document.getElementById('newMatchT1').value); let t2=parseInt(document.getElementById('newMatchT2').value); if(t1===t2) return alert('രണ്ട് വ്യത്യസ്ത ടീമുകൾ'); let label=document.getElementById('newMatchLabel').value.trim()||('Match '+(state.matches.length+1)); state.matches.push({label,t1,t2,cur1:0,cur2:0,setsWon1:0,setsWon2:0,status:'Upcoming',winner:-1}); document.getElementById('newMatchLabel').value=''; state.current=state.matches.length-1; save(); }
-window.deleteMatch=function(i){ if(confirm('ഡിലീറ്റ് ചെയ്യണോ?')){ state.matches.splice(i,1); if(state.current>=state.matches.length) state.current=0; save(); } }
+window.createMatch=function(){ let t1=parseInt(document.getElementById('newMatchT1').value); let t2=parseInt(document.getElementById('newMatchT2').value); if(t1===t2) return alert('രണ്ട് വ്യത്യസ്ത ടീമുകളെ തിരഞ്ഞെടുക്കൂ'); let label=document.getElementById('newMatchLabel').value.trim()||('Match '+(state.matches.length+1)); state.matches.push({label,t1,t2,cur1:0,cur2:0,setsWon1:0,setsWon2:0,status:'Upcoming',winner:-1}); document.getElementById('newMatchLabel').value=''; state.current=state.matches.length-1; save(); }
+window.deleteMatch=function(i){ if(confirm('ഈ മത്സരം ഡിലീറ്റ് ചെയ്യണോ?')){ state.matches.splice(i,1); if(state.current>=state.matches.length) state.current=0; save(); } }
 window.askCode=function(){ let c=prompt('Admin Password:'); if(c===null) return; if(c===state.code){ document.body.classList.add('admin'); document.getElementById('adminBadge').classList.remove('hidden'); alert('Admin Mode ON ✅'); render(); } else alert('തെറ്റായ Password ❌'); }
 window.logoutAdmin=function(){ document.body.classList.remove('admin'); document.getElementById('adminBadge').classList.add('hidden'); render(); }
-window.changeCode=function(){ let n=document.getElementById('newCode').value.trim(); if(!n) return alert('പുതിയ Password എഴുതൂ'); state.code=n; document.getElementById('newCode').value=''; save(); alert('പുതിയ Password സേവ് ആയി'); }
-window.resetAll=function(){ if(confirm('Full Reset ചെയ്യണോ?')){ set(liveRef, JSON.parse(JSON.stringify(defaultState))).then(()=>location.reload()); } }
+window.changeCode=function(){ let n=document.getElementById('newCode').value.trim(); if(!n) return alert('പുതിയ Password എഴുതൂ'); state.code=n; document.getElementById('newCode').value=''; save(); alert('പുതിയ Password സേവ് ആയി: '+n); }
+window.resetAll=function(){ if(confirm('Full Tournament Reset ചെയ്യണോ?')){ set(liveRef, JSON.parse(JSON.stringify(defaultState))).then(()=>location.reload()); } }
 window.copyLink=function(){ let url=location.href.split('?')[0]; navigator.clipboard.writeText(url).then(()=>alert('Live Link Copy ആയി ✅\n'+url)); }
 let p=new URLSearchParams(location.search); if(p.get('admin')===state.code){ document.body.classList.add('admin'); document.getElementById('adminBadge').classList.remove('hidden'); }
 render();
